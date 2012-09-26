@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {font-family:Verdana, Geneva, sans-serif; background-color:white; margin:0px; background-image:url(../images/bg.jpg); background-repeat:repeat-x;}
+
+a:link{
+	color:#0033cc; text-decoration:none;
+}
+a:visited{
+	color:#0033cc; text-decoration:none;
+}
+a:hover{
+	color:orange; text-decoration:underline;
+}
+
+ul
+{
+list-style-type:none;
+margin:0;
+
+padding:0;
+padding-top:0px;
+padding-left:22px;
+}
+li
+{
+display:inline;
+padding-right:50px;
+
+}
+
+.node li
+{
+        display:list-item;
+}
+
+#logo {margin:0px;  margin-top:-7px; }
+
+#logo_inner {margin:0px auto; width:940px; height:auto; padding-top: 8px;}
+
+#home_icon {width:20px;heigt:21px; float:left; margin-top:0px;margin-right:35px; }
+
+#nav{width:100%;height:45px; background-color:#042e62; color:white; font-family:Verdana, Geneva, sans-serif; font-size:14px; text-align:center;margin-top:0px; color:#b0d5fc; background-image:url(../images/nav_gradiant.jpg); background-repeat:repeat;}
+
+#nav_inner {margin:0px auto; width:1100px; padding-left:0px;padding-top:5px; }
+
+#banner {margin:0px auto; width:940px; height:267px;}
+
+#tagline {margin:0px auto; width:910px; height:38px; background-color:#e4f0fd; border:1px solid white; padding-top:15px; padding-left:25px; font-size:14px; margin-top:15px;}
+
+.tagline_table {border:1px solid red;margin-top:-20px;}
+
+#login {border: 1px solid red; }
+
+#content_wrapper {}
+
+.header_blue {font-size:18px; color:#004da0;}
+
+.header {font-size:18px;}
+
+#form {margin-left:5px; font-size:10px;}
+
+hr {color: #fff; background-color: #fff; border: 1px dotted #b0d5fc; border-style: none none dotted; }
+
+#bottom{margin:0px auto; width:940px; height:400px; }
+
+.read_more{font-size:10px; color:orange;}
+
+.read_more a:link{
+	color:orange; text-decoration:none;
+}
+
+.job_postings {margin-left:20px;}
+
+#job_posting{font-size:10px;}
+
+#job_posting a {color:orange}
+
+#job_posting a:hover{color: #157bc9;}
+
+.news_item{font-size:10px;}
+
+#footer{ margin:0px auto; width:940px; height:50px;}
+
+#footer_top { width:890px; height:25px; background-color:#f3f4f3; color:black; font-family:Verdana, Geneva, sans-serif; font-size:10px; padding-top:13px; padding-left: 50px;}
+
+#footer_top a {color:black; text-decoration:none;}
+
+#footer_top a:hover {color: orange; text-decoration:underline;}
+
+#footer_bottom{ width:890px;height:25px; background-color:#808080; color:black; font-family:Verdana, Geneva, sans-serif; font-size:10px; padding-top:13px; padding-left: 50px;}

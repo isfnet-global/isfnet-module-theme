@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implementation of hook_install
+ *
+*/
+function isfnet_user_install()
+{
+	// This module needs to be executed after the field_group
+	// and field_collection modules, so the module weight is changed
+	db_query('UPDATE {system} SET weight = 2 WHERE name = :name', 'isfnet_user');
+}
+
+function isfnet_user_uninstall()
+{
+	// This function needs to exist to force full
+	// uninstalls, but nothing actually needs to happen in it
+}

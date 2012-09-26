@@ -1,0 +1,80 @@
+/**
+ * @file
+ * Navigation Styling
+ */
+
+
+/*
+ * The active item in a Drupal menu
+ */
+ a:link{
+	color:#0033cc; text-decoration:none;
+}
+a:visited{
+	color:#0033cc; text-decoration:none;
+}
+a:hover{
+	color:orange; text-decoration:underline;
+}
+ 
+li a.active {
+  color: #f4b800;
+}
+
+/*
+ * Navigation bar
+ */
+#navigation {font-size:14px; text-align:center;margin-top:0px; color:#0033cc; background-image:url(../images/nav_gradiant.jpg); background-repeat:repeat;  padding-top:8px; height:34px; 
+  /* overflow: hidden; /* Sometimes you want to prevent overlapping with main div. */
+}
+
+#navigation ul.links, /* Main menu and secondary menu links */
+#navigation .main-menu li.first{}
+#navigation .content ul /* Menu block links */ {
+list-style-type:none;
+margin:0;
+
+padding:0;
+padding-top:0px;
+padding-left:22px;
+}
+
+#navigation ul.links li, /* A simple method to get navigation links to appear in one line. */
+#navigation .content li {
+display:inline;
+padding-right:50px;
+
+}
+
+
+.region-navigation {
+}
+
+/*
+ * Main menu and Secondary menu links
+ */
+#main-menu {
+    
+	padding-bottom:10px;
+    margin-top:-5px;
+}
+
+#secondary-menu {
+  float: right;
+}
+
+/*
+ * Menu blocks
+ */
+.block-menu {
+}
+
+/*
+ * "Menu block" blocks
+ *
+ * Drupal core has limited ways in which it can display its menus. To get around
+ * these limitations, see http://drupal.org/project/menu_block
+ */
+.block-menu-block {
+}
+

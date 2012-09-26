@@ -1,0 +1,339 @@
+<?php
+
+/**
+ * Implementation of hook_schema()
+ */
+function jobs_schema()
+{
+	// Create the base table holding job information
+	$schema['jobs'] = array
+	(
+		'description' => t('Stores job data.'),
+		'fields' => array
+		(
+			'jid' => array
+			(
+				'type' => 'serial',
+				'not null' => TRUE,
+				'description' => 'Primary Key: Unique Job ID.',
+			),
+			'type' => array
+			(
+				'description' => 'The {job_type}.type of this job.',
+				'type' => 'varchar',
+				'length' => 32,
+				'not null' => TRUE,
+				'default' => '',
+			),
+			'uid' => array
+			(
+				'type' => 'int',
+				'unsigned' => TRUE,
+				'not null' => FALSE,
+				'default' => NULL,
+				'description' => "The {users}.uid of the user to create the job.",
+			),
+			'label' => array
+			(
+				'description' => 'A human-readable label for this job.',
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+				'default' => '',
+			),
+			'created' => array
+			(
+				'description' => 'The Unix timestamp when the job was created.',
+				'type' => 'int',
+				'not null' => FALSE,
+			),
+			'changed' => array
+			(
+				'description' => 'The Unix timestamp when the job was most recently saved.',
+				'type' => 'int',
+				'not null' => FALSE,
+			),
+			'translated' => array
+			(
+				'description' => 'A textfield containing all the translated languages. Languages will be serialized with a vertical pipe as a separator.',
+				'type' => 'text',
+			),
+			'published' => array
+			(
+				'description' => 'A textfield containing all languages in which the job has been published. Languages will be serialized with a vertical pipe as a separator.',
+				'type' => 'text',
+			),
+		),
+		'indexes' => array
+		(
+			'uid' => array('uid'),
+		),
+		'foreign keys' => array
+		(
+			'uid' => array
+			(
+				'table' => 'users',
+				'columns' => array
+				(
+					'uid' => 'uid'
+				),
+			),
+			'type' => array
+			(
+				'table' => 'job_type',
+				'columns' => array
+				(
+					'type' => 'type'
+				),
+			),
+		),
+		'primary key' => array('jid'),
+	);
+	// Create the table holding information on different job types
+	$schema['job_type'] = array
+	(
+		'description' => 'Stores information about all defined job types.',
+		'fields' => array
+		(
+			'id' => array
+			(
+				'type' => 'serial',
+				'not null' => TRUE,
+				'description' => 'Primary Key: Unique job type ID.',
+			),
+			'type' => array
+			(
+				'description' => 'The machine-readable name of this job type.',
+				'type' => 'varchar',
+				'length' => 32,
+				'not null' => TRUE,
+			),
+			'label' => array
+			(
+				'description' => 'The human-readable name of this job type.',
+				'type' => 'varchar',
+				'length' => 255,
+				'not null' => TRUE,
+				'default' => '',
+			),
+		) + entity_exportable_schema_fields(),
+		'primary key' => array('id'),
+		'unique keys' => array
+		(
+			'type' => array('type'),
+		),
+	);
+	// Create the schema to hold translated job titles
+	$schema['jobs_titles'] = array
+	(
+		'description' => t('Holds translated job titles'),
+		'fields' => array
+		(
+			'jid' => array
+			(
+				'description' => 'The JID from the {jobs} table',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+			'language' => array
+			(
+				'description' => 'The language code for the title',
+				'type' => 'varchar',
+				'length' => 10,
+				'not null' => TRUE,
+			),			
+			'label' => array
+			(
+				'description' => 'The translated label for the job',
+				'type' => 'varchar',
+				'length' => 255,
+			),
+		),
+		'primary key' => array('jid', 'language'),
+		'foreign keys' => array
+		(
+			'jid' => array
+			(
+				'table' => 'jobs',
+				'columns' => array
+				(
+					'jid' => 'jid'
+				),
+			),
+			'language' => array
+			(
+				'table' => 'languages',
+				'columns' => array
+				(
+					'language' => 'language',
+				),
+			),
+		),
+	);
+	$schema['job_applications'] = array
+	(
+		'description' => 'Allows a many-to-many relationship between applicants and jobs',
+		'fields' => array
+		(
+			'jid' => array
+			(
+				'description' => 'The Job ID from the {jobs} table',
+				'type' => 'int',
+				'not null' => TRUE,
+				'unsigned' => TRUE,
+			),
+			'uid' => array
+			(
+				'description' => 'The User ID from the {users} table',
+				'type' => 'int',
+				'not null'=> TRUE,
+				'unsigned' => TRUE
+			),
+			'timestamp' => array
+			(
+				'description' => 'A UNIX timestamp indicating the datetime at which the job was applied to',
+				'type' => 'int',
+				'length' => 11,
+				'not null' => TRUE,
+				'unsigned' => TRUE,
+			),
+			'status' => array
+			(
+				'description' => 'An integer allowing for various statuses to be set on the job applcation',
+				'type' => 'int',
+				'length' => 2,
+				'not null' => TRUE,
+				'unsigned' => TRUE,
+				'default' => 0,
+			),
+		),
+		'primary key' => array
+		(
+			'jid_uid' => array('jid', 'uid'),
+		),
+		'foreign keys' => array
+		(
+			'jid' => array
+			(
+				'table' => 'jobs',
+				'columns' => array
+				(
+					'jid' => 'jid'
+				),
+			),
+			'uid' => array
+			(
+				'table' => 'users',
+				'columns' => array
+				(
+					'uid' => 'uid',
+				),
+			),
+		),
+	);
+	
+	return $schema;
+}
+
+/**
+ * Implemenatation of hook_update_n()
+ */
+function jobs_update_7005()
+{
+	db_add_field
+	(
+		'jobs',
+		'published',
+		array
+		(
+			'description' => 'A textfield containing all languages in which the job has been published. Languages will be serialized with a vertical pipe as a separator.',
+			'type' => 'text',
+		)
+	);
+}
+
+/**
+ * Implementation of hook_update_n()
+ *
+ * Adds the job_applications table to the database
+ */
+function jobs_update_7006()
+{
+	db_create_table
+	(
+		'job_applications',
+		array
+		(
+			'description' => 'Allows a many-to-many relationship between applicants and jobs',
+			'fields' => array
+			(
+				'jid' => array
+				(
+					'description' => 'The Job ID from the {jobs} table',
+					'type' => 'int',
+					'not null' => TRUE,
+					'unsigned' => TRUE,
+				),
+				'uid' => array
+				(
+					'description' => 'The User ID from the {users} table',
+					'type' => 'int',
+					'not null'=> TRUE,
+					'unsigned' => TRUE
+				),
+				'timestamp' => array
+				(
+					'description' => 'A UNIX timestamp indicating the datetime at which the job was applied to',
+					'type' => 'int',
+					'length' => 11,
+					'not null' => TRUE,
+					'unsigned' => TRUE,
+				),
+			),
+			'primary keys' => array
+			(
+				'jid_uid' => array('jid', 'uid'),
+			),
+			'foreign keys' => array
+			(
+				'jid' => array
+				(
+					'table' => 'jobs',
+					'columns' => array
+					(
+						'jid' => 'jid'
+					),
+				),
+				'uid' => array
+				(
+					'table' => 'users',
+					'columns' => array
+					(
+						'uid' => 'uid',
+					),
+				),
+			),
+		)
+	);
+}
+
+function jobs_update_7007()
+{
+	db_add_primary_key('job_applications', array('jid', 'uid'));
+}
+
+function jobs_update_7008()
+{
+	db_add_field(
+		'job_applications',
+		'status',
+		array
+		(
+			'description' => 'An integer allowing for various statuses to be set on the job applcation',
+			'type' => 'int',
+			'not null' => TRUE,
+			'unsigned' => TRUE,
+			'default' => 0,
+		)
+	);
+}

@@ -1,0 +1,27 @@
+div.opacity-provider
+{
+    display:none;
+    top:00px;
+    left:0px;
+    min-width:100%;
+    min-height:100%;/*these make the opacity provider fill the screen*/
+    opacity:0.8;
+    filter:alpha(opacity=50);  
+    position:absolute;
+    background:red;
+    z-index:100;  
+}
+
+div.popup-data
+{
+    width:800px;
+    height:600px;
+    display:none;
+         background:white;
+      z-index:101;   /*must be greater than the opacity provider*/   
+    position:relative;  
+    top:0px;
+    left:50%; /*centers the div*/
+	overflow:scrollable;
+	border:1px solid red;
+	}

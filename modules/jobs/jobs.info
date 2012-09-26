@@ -1,0 +1,9 @@
+name = Jobs Module
+description = Provides the core functionality for ISFnet's job site
+core = 7.x
+
+dependencies[] = entity
+
+files[] = includes/jobs.entity.class.inc
+
+package = ISFnet

@@ -1,0 +1,5 @@
+name = ISFnet User
+description = Adds site specific customizations to users throughout the site
+core = 7.x
+
+dependencies[] = profile2_regpath

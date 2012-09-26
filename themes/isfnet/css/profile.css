@@ -1,0 +1,100 @@
+/* PROFILE PAGE - MINHNGUYEN */
+.views-field
+, .content .field    {
+   float: left;
+   width: 215px;
+   padding: 0 10px 0 0;
+   margin: 0 0 15px 0;
+}
+
+.views-field {
+	position: relative;
+}
+.item-list li {
+	overflow: hidden;
+	padding: 10px !important;
+}
+.views-field.views-field-field-contact
+, .views-field.views-field-field-education-school 
+, .views-field.views-field-field-employment-collection 
+, .views-field.views-field-field-education-user
+, .views-field.views-field-field-other-skills
+ {
+	clear:  both;
+	float: none;
+	width: 100%;
+ 	padding: 0;
+}
+.views-field.views-field-field-contact .views-label
+, .views-field.views-field-field-education-school  .views-label
+, .views-field.views-field-field-employment-collection  .views-label
+, .views-field.views-field-field-education-user .views-label
+, .views-field.views-field-field-other-skills .views-label {
+		border-width: 1px 1px 1px 3px;
+		border-color: #cecece #cecece #cecece #4498E7;
+		border-style: solid;
+		background: #f4f4f4;
+		zoom: 0;
+		background: linear-gradient(#f4f4f4, #dddddd);
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startcolorstr=#f4f4f4, endcolorstr=#dddddd));
+		-ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startcolorstr=#f4f4f4, endcolorstr=#dddddd))";
+		background: -moz-linear-gradient(top, #f4f4f4, #dddddd);
+		background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#dddddd));
+		/* ------------- */
+		display: block;	    
+	    line-height: 21px;
+		color: #303030;
+		padding: 3px 10px;
+		font-weight: bold;
+		margin: 0 0 10px 0;
+}
+/* ----- Profile ------------------------------------------------------- */
+		.views-field-field-user-first-name span.views-label
+		, .views-field-field-gender span.views-label
+		, .views-field-field-user-last-name span.views-label
+		, .views-field-field-user-dob span.views-label
+		, .views-field-field-user-country  span.views-label 
+		, .views-field-field-user-country  span.views-label 
+		, .views-field-field-country-of-residence span.views-label
+		, .views-field-field-country-of-residence span.views-label 
+		, .views-field-field-user-city span.views-label 
+		, .views-field-field-user-address span.views-label 
+		, .views-field-field-user-cover-letter span.views-label 
+		, .views-field-field-user-resume span.views-label  {
+			font-weight: bold;
+		}
+		.views-field.views-field-field-user-cover-letter
+		, .views-field.views-field-field-user-resume {
+			width: 440px;
+		}
+		.views-field.views-field-field-user-resume {
+			margin: 0;
+		}	
+		.views-field.views-field-field-other-skills {
+			border-bottom: 1px dotted #ccc;
+		}
+		ul.field-collection-view-links  li {
+			background: none !important;
+			box-shadow: none !important;
+			display: inline;
+			margin: 0 5px 0 0 !important;
+			padding: 0 7px 0 0 !important;
+			border-right: 1px solid #4498E7;
+		}	
+		ul.field-collection-view-links  li.delete.last {
+			margin: 0 0 0 0 !important;
+			padding: 0 0 0 0 !important;
+			border-right: none !important;
+		}
+		ul.field-collection-view-links {
+			position: absolute;
+			top : 5px;
+			right: 20px;
+		}
+		ul.field-collection-view-links a {
+			color: #4498E7;
+			font-size: 11px;
+		}
+		ul.field-collection-view-links a:hover {
+			color: #999;
+		}

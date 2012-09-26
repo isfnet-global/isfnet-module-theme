@@ -1,0 +1,43 @@
+<?php
+
+/**
+* Default theme function for all filter forms.
+*/
+fnction isfnet_preprocess_views_exposed_form(&$vars) {
+  $form = &$vars['form'];
+
+  foreach ($form['#info'] as $id => $info) {
+    $widget = new stdClass;
+    // set up defaults so that there's always something there.
+    $widget->label = $widget->operator = $widget->widget = NULL;
+
+    $widget->id = $form[$info['value']]['#id'];
+    if (!empty($info['label'])) {
+      $widget->label = $info['label'];
+    }
+    if (!empty($info['operator'])) {
+      $widget->operator = drupal_render($form[$info['operator']]);
+    }
+//here's where you replace the terms with translated terms
+    $options = array();
+    $taxonomy_array = $form[$info['value']]['#options'];
+    if (sizeof($taxonomy_array) > 0) {
+	foreach ($taxonomy_array as $key => $option) {
+        $options[$key] = t($option);   
+    }
+   }
+   unset($form[$info['value']]['#printed']);
+   $form[$info['value']]['#options'] = $options; 
+
+//end modification
+    $widget->widget = drupal_render($form[$info['value']]);
+    $vars['widgets'][$id] = $widget;
+  }
+
+}
+
+function isfnet_init() {
+  $path = isset($_GET['q']) ? $_GET['q'] : '<front>';
+  $link = url($path, array('absolute' => TRUE));
+  dpm($link);
+}

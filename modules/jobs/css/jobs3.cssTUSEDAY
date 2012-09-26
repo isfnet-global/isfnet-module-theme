@@ -1,0 +1,64 @@
+div.opacity-provider
+{
+    display:none;
+    top:00px;
+    left:0px;
+    min-width:100%;
+    min-height:100%;/*these make the opacity provider fill the screen*/
+    opacity:0.8;
+    filter:alpha(opacity=50);  
+    position:absolute;
+    background:#333;
+    z-index:100;  
+}
+
+div.popup-data
+{
+    width:300px;
+    height:400px;
+    display:none;
+    background:#CCC;
+	z-index:101;   /*must be greater than the opacity provider*/   
+    position:relative;  
+    top:0px;
+    /*left:50%;*/ /*centers the div*/
+	/*overflow:scrollable;*/
+	
+	margin-left:-50px;
+	margin-right:100px;
+	margin-top:-200px;
+	padding:10px;
+
+	-moz-border-radius: 15px;
+border-radius: 15px;
+border: 3px solid yellow;
+/*font-color:#FFF;*/
+background-color:white;
+;
+/*color:#FFF;*/
+width:600px;
+margin-left:-150px;
+margin-top:-200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:0px;
+height:100%;
+
+	}
+
+div.jobs_out_wrapper {border:1x solid pink; width:150px; height:100px;}
+
+.jobs_container{border:1px solid red;}
+
+div.jobs
+#example1 {
+-moz-border-radius: 15px;
+border-radius: 15px;
+border: 1px outset #333;
+background-color:#333;
+color:#FFF;
+width:600px;
+margin-left:8px;
+margin-top:-13px;
+padding:10px;
+}

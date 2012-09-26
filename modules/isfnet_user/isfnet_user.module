@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * Override user_register_form()
+ *
+ * This function moves drupal core user register fields
+ * Into the group_site_info_tab element if it exists
+ */
+function isfnet_user_form_user_register_form_alter(&$form, &$form_state)
+{
+	// Only need to alter the form if it is one that has been set to
+	// be outputted by the profile2_regpath module. As such, the profile
+	// types are grabbed 
+	$profile_types = profile2_regpath_get_profiles();
+	if ($profile_types && arg(0))
+	{
+		// Next, the profile types are searched to see if any compare to
+		// the current first argument.
+		$type = FALSE;
+		foreach ($profile_types as $key => $value)
+		{
+			if($value->path == arg(0))
+			{
+				$type = $value->type;
+			}
+		}
+
+		// If a match has been found, and there are any groups set, and the group_site_info_tab exists,
+		// the account data is moved into the tab in the following section.
+		if($type !== FALSE && strlen($type) && isset($form['profile_' . $type], $form['profile_' . $type]['#group_children'], $form['profile_' . $type]['#fieldgroups'], $form['profile_' . $type]['#fieldgroups']['group_site_info_tab'], $form['profile_' . $type]['#fieldgroups']['group_site_info_tab']->format_type) && $form['profile_' . $type]['#fieldgroups']['group_site_info_tab']->format_type == 'tab')
+		{
+			// The type needs to be saved to be used in validation and/or processing
+			$form['isfnet_user_type'] = array
+			(
+				'#type' => 'value',
+				'#value' => $type,
+			);
+			// In this section, the account fields are turned into a vertical tab.
+			// This requires moving the account fields into the profile element.
+			// This however is a bit of a hack, since the system doesn't expect
+			// the fields there.
+		
+			// Copy all parent elements into the tab
+			$movable = array('account', 'signature_settings', 'picture', 'timezone');
+			foreach($movable as $element_id)
+			{
+				$form['profile_' . $type][$element_id] = $form[$element_id];
+				// Setting #access to FALSE means that the form elements still exist,
+				// but are not available to users - ie: they are hidden.
+				$form[$element_id]['#access'] = FALSE;
+
+				// The next two lines of code fakes the group into the site info tab.
+				$form['profile_' . $type]['#groups']['group_site_info']->children[] = $element_id;
+				$form['profile_' . $type]['#group_children'][$element_id] = 'group_site_info_tab';
+			}
+
+			// Finally, a custom validation function is pushed onto the top of
+			// the stack. The reasoning behind this is that the values submitted in
+			// the copy of the ['account'] element need to be set to the original
+			// form elements, or else they will fail their validation and won't be
+			// submitted
+			array_unshift($form['#validate'], 'isfnet_user_form_user_register_form_alter_validate');
+		}
+	}
+}
+
+/**
+ * If the core provided fields were moved into
+ * the group_site_info tab, then core-provided
+ * submit validation and submit funcitons will
+ * throw errors, as the values submitted will
+ * not be in the expected array key. As such,
+ * the submitted values are inserted as values
+ * for the original form definition, so that
+ * any modules expecting the values will be
+ * able to use them.
+ */
+function isfnet_user_form_user_register_form_alter_validate($form, &$form_state)
+{
+	// Nothing needs to be done if a type was not set
+	if(isset($form_state['values']['isfnet_user_type']))
+	{
+		$type = $form_state['values']['isfnet_user_type'];
+		$moved = array('account', 'signature_settings', 'picture', 'timezone');
+	
+		foreach($moved as $element_key)
+		{
+			foreach($form_state['values']['profile_' . $type][$element_key] as $key => $value)
+			{
+				if(!is_array($value))
+				{
+					form_set_value($form[$element_key][$key], $value, $form_state);
+				}
+				else
+				{
+					foreach($value as $k => $v)
+					{
+						form_set_value($form[$element_key][$key][$k], $form_state['values']['profile_' . $type][$element_key][$key][$k], $form_state);
+					}
+				}
+			}
+		}	
+	}
+}

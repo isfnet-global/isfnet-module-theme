@@ -1,0 +1,28 @@
+name = ISFnet
+description = Custom Theme for ISFnet from Rain Interactive
+core = 7.x
+engine = phptemplate
+stylesheets[all][] = css/style.css
+
+regions[header_top]     = Header Top
+regions[header]         = Header
+regions[navigation]     = Navigation
+regions[highlighted]    = Highlighted
+regions[help]           = Help
+
+regions[main_top]       = Main Top
+regions[content_top]    = Content Top
+regions[sidebar_first]  = Sidebar Left
+regions[sidebar_second] = Sidebar Right
+regions[content]        = Content
+regions[content_bottom] = Content Bottom
+
+regions[footer_top]     = Footer Top
+regions[footer_left]    = Footer Left
+regions[footer_middle]  = Footer Middle
+regions[footer_right]   = Footer Right
+regions[footer_bottom]  = Footer Bottom
+
+regions[main_bottom]    = Main Bottom
+
+scripts[] = js/main.js

@@ -1,0 +1,802 @@
+/*
+PAGE: Applicant register
+STYLE: of FORM in The Steps
+AUTHOR: Minh   
+-----------------------------
+COLOR ----------------------- 
+	SKY BLUE  : #157BC9
+	GRAY 1    : #ccc
+	DARK GRAY : #414141
+	TEXT GRAY : #5b5b5b
+-----------------------------
+*/
+.messages.error
+
+	 {
+		display: none;
+	}
+/* COMMON in this FORM */
+textarea {
+	border: 1px solid #ccc;
+}
+.multipage-panes {
+		margin: 20px 0;		
+}
+.multipage-panes h2.multipage-pane-title {
+	margin: 0 0 60px 0;
+	font-weight: bold;
+	color: #5b5b5b;
+}
+	.multipage-panes h2.multipage-pane-title span em {
+		color: #157BC9;
+	}  
+	.form-item .description {
+		font-size: 10px;
+	}
+/* SELECT IN STEP, select list */	
+#profile2_applicant_form_group_personal_info .form-select
+, #field-education-school-values select 
+, #field-employment-collection-values select 
+, #profile2_applicant_form_group_skills	select {
+	border-color: #C9C9C9 #D9D9D9 #E8E8E8;
+    border-radius: 1px 1px 1px 1px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 5px 5px 0;
+}
+/* END: SELECT IN STEP */
+.fieldset-wrapper.multipage-pane-wrapper {
+	padding: 0 20px;
+}
+/* 
+	WIDTH content of this page      = 920
+	WIDTH content of this muti form = 880
+	margin = 20
+	------------------------------------- 
+	GRID 2: COL    = 430	  
+	GRID 3: COL    = 280     
+	GRID 4: COL    = 205 			
+*/
+.group_applicant_name
+, .group_gender_age 
+  {
+	float: left;
+	width: 430px;	
+}
+.group_applicant_name { margin: 0 20px 0 0; } 
+
+.multipage-pane-wrapper .form-item {
+	margin:0;
+}
+.multipage-pane-wrapper .field-type-text
+, .multipage-pane-wrapper .field-widget-options-buttons
+, .multipage-pane-wrapper .field-widget-date-select 
+, .multipage-pane-wrapper .field-type-list-text 
+, .multipage-pane-wrapper .field-type-list-boolean{
+	margin:0 0 10px 0;
+}
+
+
+	/* GROUP FORMAT */
+	.field-group-format h3 {
+		margin:0 0 20px 0;
+		font-weight: bold;
+		background: url(../images/title_line.png) repeat-x left bottom;
+	}
+	.field-group-format h3 span {
+		background: #fff;	
+		padding: 0 15px 0 0;
+	}
+	.group_applicant_name h3
+	, .group_gender_age h3 {
+		display: none;
+	}   
+	/* GENDER DIV */
+	#edit-profile-applicant-field-gender-en {
+		height: 30px;
+		line-height: 30px;
+	}
+	#edit-profile-applicant-field-gender-en > div {
+			display: inline;
+	}
+	/* DAY of Birth  */
+	#profile-applicant-field-user-dob-add-more-wrapper * {
+		margin: 0;
+		padding: 0;		
+	}
+		#profile-applicant-field-user-dob-add-more-wrapper  fieldset {
+			border: none;
+		}
+		#profile-applicant-field-user-dob-add-more-wrapper  fieldset select {
+			margin:0 20px 0 0;
+		}  
+	/* NATION GROUP CLEARFIX */
+	.group_nation_clearfix {
+		clear: both;
+		margin: 0 0 20px 0;
+	}
+		/* BLOCK left width 50% */
+		.group_nation_select
+		, .group_zipcode_wrapper {
+			float: left;
+			width: 430px;	
+		} 
+		.group_nation_select {margin: 0 20px 0 0}
+		.group_nation_select h3
+		, .group_zipcode_wrapper h3 {
+			display: none;
+		} 
+		#edit-profile-applicant-field-user-address {
+			clear: both;
+		}
+		/* INPUT Postcode (city) * */
+		#edit-profile-applicant-field-user-city-en-0-value {
+			width: 424px;
+		}
+		#edit-profile-applicant-field-user-visa {
+			padding: 15px 0 0 0;
+		}
+	/* ADD MORE CONTACT WRAPPER */
+	#profile-applicant-field-contact-add-more-wrapper {
+		position: relative;
+	}	
+		.tabledrag-toggle-weight-wrapper {
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size: 11px;
+			font-style: italic;
+		}
+		.field-multiple-table.tabledrag-processed {
+			margin: 0 0 10px 0;
+		}
+		 #field-contact-values .field-type-text  
+		, #field-contact-values .field-type-list-text {
+			width: 390px;
+			float: left; 
+			text-align: left ;
+		}
+		#field-contact-values .field-type-text  {
+			margin: 0 20px 0 0;
+		}
+		#field-contact-values  input.form-submit.ajax-processed {
+			clear: both;	
+			margin: 0 5px 0 0;		
+		}
+		#field-contact-values td {
+			padding: 10px 5px;
+			text-align: right;
+			font-size: 12px;
+		}
+		#field-contact-values .form-radios div {
+			display: inline;
+		}
+		/* FINISH BUTTON */
+		.multipage-controls-list input#edit-submit{
+		   		background: #2989d8; /* Old browsers */
+				background: -moz-linear-gradient(top,  #2989d8 0%, #366abc 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2989d8), color-stop(100%,#366abc)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #2989d8 0%,#366abc 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#366abc',GradientType=0 ); /* IE6-9 */
+		  color: white;
+		  text-shadow: none;
+		  text-transform: uppercase ;
+		  min-width: 79px ;
+		
+		}
+		#edit-actions {
+			margin: 0;
+		}
+				
+		/* ADD MORE ITEM */
+		#edit-profile-applicant-field-contact-en-add-more 
+		,  input.form-submit.ajax-processed {
+				margin: 0;
+				display:inline-block;
+				zoom:1;
+				*display:inline;
+			/* zoom and *display = ie7 hack for display:inline-block */
+				margin:0;
+				padding:4px 16px;
+				outline:none;
+				cursor:pointer;
+				vertical-align:baseline;
+			/* text */
+				color:#666;
+				text-shadow:0 1px 0 rgba(255,255,255,.4);
+				font-size: 12px;
+				text-align:center;
+				text-decoration:none;
+				font-family: Arial, Cabin, sans-serif;
+			/* border color */
+				border:solid 1px #ccc;
+				border-color: #ccc;	/* border color */
+			/* background color (gradient) */
+				background: #e1dede;					
+				background: -webkit-gradient(linear, left top, left bottom, from(#ecebeb), to(#cfcccc));
+				background: -moz-linear-gradient(top, #ecebeb,  #cfcccc);
+				background: linear-gradient(#ecebeb, #cfcccc); 		
+			/* special effects (shadows, radius, transition, etc.) */
+				-webkit-border-radius:2px;
+				-moz-border-radius:2px;
+				border-radius:2px;
+			/* border radius */
+				-webkit-box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);
+			/* box shadow */
+				-moz-box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);
+				box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);
+				-webkit-background-clip:padding-box
+			/* smoother borders with webkit */
+			behavior: url(sites/all/libraries/PIE.htc);
+		}
+		input#edit-profile-applicant-field-contact-en-add-more:hover 
+		, input.form-submit.ajax-processed:hover {
+			border:solid 1px #ccc;
+			/* background color (gradient) */
+			background:#d4d4d4;
+			background:-webkit-gradient(linear,left top,left bottom,from(#dedede),to(#c7c7c7));
+			background:-moz-linear-gradient(top,#dedede,#c7c7c7);
+			background:linear-gradient(#dedede,#c7c7c7);
+		}
+		/* END: ADD MORE ITEM */
+		table.sticky-header {
+			display: none;
+		}
+	/* END OF STEP FORM  */
+	.multipage-controls-list {
+		clear: both;
+		margin: 20px 0 0 0;
+		overflow: hidden;
+		position: relative;
+		height: 35px;
+	}
+		#edit-submit {
+			left: 0;
+		}
+		.multipage-controls-list input.multipage-link-next{
+			  /* POSITION */
+				position: absolute;
+				right: 50px;
+				top: 0;
+	
+			 /* ---------------- */
+			  border: none;
+			  border-radius: 2px ;
+			  -moz-border-radius: 2px ;
+			  -webkit-border-radius: 2px ;
+			  border: 1px solid rgba(0, 0, 0, 0.1) t;
+			  font: 12px arial,sans-serif ;
+			  font-weight: bold ;
+			  color: #fff ;
+			  text-shadow: 0 1px 0 #414141 ;
+			  padding: 7px 12px ;
+			  margin: 0 10px 0 0;
+			  background: #2989d8; /* Old browsers */
+				background: -moz-linear-gradient(top,  #2989d8 0%, #366abc 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2989d8), color-stop(100%,#366abc)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #2989d8 0%,#366abc 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #2989d8 0%,#366abc 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2989d8', endColorstr='#366abc',GradientType=0 ); /* IE6-9 */
+			  
+			  -o-transition: border-top-color 0.218s,border-right-color 0.218s,border-bottom-color 0.218s,border-left-color .218s ;
+			  -webkit-transition: border-color .218s ;
+		}
+		.multipage-controls-list input.form-submit:hover {
+			color: #000;
+			text-shadow: 0 1px 0 #ffffff ;
+			
+		}
+		.multipage-controls-list a.multipage-link-previous {
+			  /* POSITION */
+				position: absolute;
+				right: 160px;
+				top: 0;
+	
+			 /* ---------------- */
+			display:inline-block;
+			zoom:1;
+			*display:inline;
+		/* zoom and *display = ie7 hack for display:inline-block */
+			margin:0 2px;
+			padding: 7px 16px;
+			outline:none;
+			cursor:pointer;
+			vertical-align:baseline;
+		/* text */
+			color:#666;
+			text-shadow:0 1px 0 rgba(255,255,255,.4);
+			font-weight:700;
+			text-align:center;
+			text-decoration:none;
+		/* border color */
+			border:solid 1px #ccc;	
+		/* background color (gradient) */
+			background:#d4d4d4;
+			background:-webkit-gradient(linear,left top,left bottom,from(#dedede),to(#c7c7c7));
+			background:-moz-linear-gradient(top,#dedede,#c7c7c7);
+			background:linear-gradient(#dedede,#c7c7c7);
+		/* special effects (shadows, radius, transition, etc.) */
+			-webkit-border-radius:2px;
+			-moz-border-radius:2px;
+			border-radius:2px;
+		/* border radius */
+			-webkit-box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);
+		/* box shadow */
+			-moz-box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);
+			box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.3);			 
+					
+		}
+		.multipage-button {
+			display: block;
+			margin: 0;			
+		}	
+	/* input text */
+	.multipage-panes.multipage-processed .form-text
+	, #edit-mail.form-text 
+	, #edit-name.username {
+			margin:0;
+			padding:5px 5px 5px 0px;
+			outline:none;
+			/* text (color, etc.) */
+				color:#000;
+			/* background color */
+				background:#fff;
+			/* border color */
+				border:1px solid #d9d9d9;
+				border-color:#c9c9c9 #d9d9d9 #e8e8e8;
+			/* special effects (shadows, radius, transition, etc.) */
+				-webkit-border-radius:1px;
+				-moz-border-radius:1px;
+				border-radius:1px;		
+			/* smoother borders with webkit */
+	}
+	/* FOCUS ALL INPUT */
+	.multipage-panes.multipage-processed .form-text:focus
+	, #edit-mail.form-text:focus 
+	, #edit-name.username:focus 
+	, #edit-profile-applicant-field-user-address-en-0-value:focus 
+	, select:focus 
+	, textarea:focus {
+		border: 1px solid #a6cadd !important;
+		background: #f7fafb;
+	  outline: none;
+	
+	}
+	#edit-profile-applicant-field-user-address {
+		border-top: 1px dashed #ccc;
+		padding: 10px 0 0 0;		
+	}
+/* SCHOOL WRAPPER */
+	#field-education-school-values .form-wrapper
+	, #profile-applicant-field-education-user-add-more-wrapper .form-wrapper {
+		width: 207px;
+		float: left;
+	}
+	#field-education-school-values  td 
+	, #field-employment-collection-values td
+	, #profile2_applicant_form_group_skills td {
+		font-size: 12px;
+		text-align: right;
+		padding: 10px 10px 10px 0;
+	}
+	
+		/* FIELDSET in SCHOOL WRAPPER GROUP */
+		#field-education-school-values  td div 
+		, #field-employment-collection-values td div 
+		, #profile2_applicant_form_group_skills  td div{
+			text-align: left;
+		}
+		#field-education-school-values fieldset {
+			padding: 0;
+			margin: 0;
+			border: none;
+		}
+		#edit-profile-applicant-field-education-school-und-0-field-education-date-und-0-value {
+			padding: 0;
+		}
+		#field-education-school-values fieldset select 
+		, #field-employment-collection-values fieldset select {
+			width: 60px;
+		}  
+		#edit-profile-applicant-field-education-school-und-0-remove-button {
+			clear: both;
+		}
+		/* END: FIELDSET in SCHOOL WRAPPER GROUP  */
+	/* INPUT WIDTH 150px */
+	#field-education-school-values .form-text
+	, #field-employment-collection-values   .form-text {
+		width: 170px;
+	}
+	#field-education-school-values select
+	, #field-employment-collection-values select {
+		width: 180px;
+	}  
+	/* END: INPUT WIDTH 150px */
+	
+/* END:  SCHOOL WRAPPER */
+
+/* Employment Page */
+	#field-employment-collection-values .form-wrapper  {
+		width: 275px;
+		float: left;
+	}	
+		#edit-profile-applicant-field-employment-collection-und-0-field-work-summary {
+			clear: both;
+			width: 100%;
+			float: none !important;
+		}
+		/* Work Duration */		
+		#edit-profile-applicant-field-employment-collection-und-0-field-work-duration 
+		, #edit-profile-applicant-field-employment-collection-und-0-field-work-duration fieldset
+		, #edit-profile-applicant-field-employment-collection-und-0-field-work-summary {
+			float: none; 
+			clear: both !important;
+			width: 100% !important;
+		}
+		.start-date-wrapper { margin: 0 0 0 9px; }
+		.start-date-wrapper
+		, .end-date-wrapper {
+			float: left;
+			width: 250px;
+		}
+		.start-date-wrapper label
+		, .end-date-wrapper label {
+			display: inline;
+			float: left;
+			margin: 0 10px 0 0;
+			height: 30px; 
+			line-height: 30px;
+		}
+		#edit-profile-applicant-field-employment-collection-und-0-field-work-duration-und-0-value 
+		, #edit-profile-applicant-field-employment-collection-und-0-field-work-duration-und-0-value2
+		{	
+			padding: 0;
+			display: inline !important;
+		}
+		#field-employment-collection-values .date-no-float.container-inline-date  {
+			clear: none !important;
+		}
+		#edit-profile-applicant-field-employment-collection-und-0-field-work-current {
+			height: 20px; 
+			padding: 20px 0 0 0;
+		} 
+		.form-item-profile-applicant-field-employment-collection-und-0-field-work-duration-und-0-show-todate
+		{
+			height: 30px; 
+			line-height: 30px;			
+		}
+		#profile-applicant-field-employment-collection-add-more-wrapper fieldset {
+			padding: 0;
+			margin: 0;
+			border: none;
+		}
+/* END: Employment page*/	
+
+/* Skills & Interests PAGE */
+	#edit-profile-applicant-field-other-skills .form-wrapper {
+		width: 300px;
+		float: left;
+	}
+	#edit-profile-applicant-field-other-skills {
+		margin: 20px 0;
+	}
+	
+/* END: Skills & Interests  */				
+
+/* STEP 5 PAGE */
+	#edit-profile-applicant-field-user-cover-letter  {
+		margin: 0 0 20px 0; 
+	}
+	#edit-profile-applicant-field-disclaimer-en  .form-type-radio {
+		display: inline;
+	}
+	#edit-profile-applicant-field-disclaimer .description {
+		height: 150px;
+		overflow: scroll;
+		background: #fff;
+		border: 1px solid #ccc;
+		padding: 0 10px;
+		margin: 15px 0 0 0;
+	}
+	#edit-profile-applicant-field-user-resume-und {
+		width: 400px !important;
+	}
+	#edit-profile-applicant-field-user-resume-und legend span {
+		padding: 0 10px;
+	}
+/* END: STEP 5 PAGE */		
+	/* INPUT WIDTH 250px */
+	.multipage-panes.multipage-processed .form-text
+	{
+		width: 250px;
+	}
+	.group_nation_select select {
+		width: 260px;
+	}  
+	/* END: INPUT WIDTH 250px */
+	
+	/* Captcha */
+	.user-register-form {
+		position: relative;
+	}
+	.form-type-textfield.form-item-mollom-captcha {
+		margin: 0;
+	    position: absolute;
+	    right: 80px;
+	    top: 558px;
+	    width: 300px;
+	}
+	/*
+	.form-item.form-type-textfield.form-item-mollom-captcha {
+		*display: none;
+	}
+	*/	
+	.form-item-mollom-captcha .field-prefix {
+		display: block;
+		width: 160px; 
+		height: 50px;
+		position: relative;
+		padding: 0 55px 0 0;
+		overflow: hidden;
+		margin: 0 0 10px 0;
+	}
+		.mollom-audio-captcha {
+			display: block;
+			width: 40px; 
+			height: 40px;
+			position: absolute;
+			top: 3px ;
+			right: 10px;
+			overflow: hidden;
+			text-indent: -1000px;
+			background: url(../images/sound.png) 0 0 no-repeat;
+		} 
+		a.mollom-audio-captcha:hover {
+			background-position: 0 -40px;
+		} 
+		#edit-mollom-captcha {
+			width: 198px;
+		}
+/* Progess Bar */ 
+		
+		.group_div_above_multipage {
+			position: relative;
+		}
+			.progess_bar {
+				    left: 310px;
+				    position: absolute;
+				    top: -10px;
+			}
+	/* STEP BOX */
+			.step  {
+				width: 80px;
+				padding: 10px 20px; 
+				float: left;
+				text-align: center;
+				position: relative;
+				color: #CCC;
+			}
+			.step.active .step_no{
+				background: none repeat scroll 0 0 #2989D8;
+			}
+			.step.active .step_desc {
+				color: #2989D8;
+			}
+			.step_no {
+				background: none repeat scroll 0 0 #CCC;
+    			-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+			    color: #FFFFFF;
+			    display: block;
+			    font-weight: bold;
+			    height: 18px;
+			    padding: 1px 0;			  
+			    width: 21px;
+				margin: 0 auto;
+			}
+			.step_desc {
+				font-size: 11px;
+			    font-weight: bold;
+			    padding: 0;
+			}
+			.line_to_step {
+				height: 2px;
+				width: 120px;
+				background: none repeat scroll 0 0 #ccc;
+				position: absolute;
+				right: -70px;
+				top: 19px;
+			}
+			.line_to_step.active {
+				background: none repeat scroll 0 0 #2989D8;
+			}
+			.step em {
+				   background: none repeat scroll 0 0 #FFFFFF;
+				    
+				    color: #35A000;
+				    font-size: 10px;
+				    font-weight: bold;
+				    position: absolute;
+				    right: 40px;
+				    top: 3px;
+				
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+			}
+/* END: Progess Bar */				
+/* ADD MORE INPUT  */
+tr.even, tr.odd {
+    border-bottom: 1px solid #ccc ;
+	background: #f7fafb;	
+}
+
+.field-type-field-collection.field-widget-field-collection-embed {
+	position: relative;
+}
+/* validate CSS */
+.jfval, .messbox {
+        position: absolute;
+        z-index: 1110;
+}
+.jvalSpacer {
+        position: absolute;
+        width: 0px;
+        float: left;
+}
+.jvalSpacercover {
+        background: #eee url(eeGrad2.gif) bottom repeat-x;
+        border: 1px solid #ccc;
+        border-right: 0px;
+}
+.jvalSpacerpod {
+        background: #f0f2f5 url(f0f2f5grad.gif) bottom repeat-x;
+        border: 1px solid #ccc;
+        border-right: 0px;
+}
+.jvalSpacerblank {
+        height: 16px !important;
+        opacity: 0.6;
+}
+.jfval .icon 
+, .messbox .icon  {
+        float: left;
+}
+.jfval .iconcover {
+        background: #eee url(eeGrad2.gif) bottom repeat-x;
+        border: 1px solid #ccc;
+        border-width: 1px 0px;
+        width: 20px;
+        text-align: left;
+}
+.jfval .iconpod {
+        background: #f0f2f5 url(f0f2f5grad.gif) bottom repeat-x;
+        border: 1px solid #ccc;
+        border-left: 0px;
+        -moz-border-radius-topright: 3px;
+        -moz-border-radius-bottomright: 3px;
+        -webkit-border-top-right-radius: 3px;
+        -webkit-border-bottom-right-radius: 3px;
+        width: 20px;
+        text-align: left;
+}
+.jfval .iconblank 
+, .messbox .iconblank {
+        background: #fff;
+        margin-top: -4px;
+        height: 20px !important;
+        padding-left: 5px;
+}
+.jfval .icon .iconbg
+, .messbox .icon .iconbg {
+        background: url(../images/warning.png) center left no-repeat;
+        height: 100%;
+        width: 16px;
+}
+.jfval .content, .messbox .messageblank {
+        color: red;
+        vertical-align: middle;
+        white-space: nowrap;
+        float: left;
+        padding-right: 5px;
+}
+.jfval .contentcover {
+        background: #eee url(eeGrad2.gif) bottom repeat-x;
+        border: 1px solid #ccc;
+        border-left: 0px;
+        -moz-border-radius-topright: 3px;
+        -moz-border-radius-bottomright: 3px;
+        -webkit-border-top-right-radius: 3px;
+        -webkit-border-bottom-right-radius: 3px;
+}
+.jfval .messagepod {
+        opacity: 0.8;
+        background: #fff;
+        padding: 2px 5px;
+}
+.jfval .messageblank {
+        background: #fff;
+        padding: 2px 5px;
+}
+.messbox .messageblank {
+        background: #fff;
+        padding: 0px 5px;
+}
+#form_blank input[type=text], #form_blank [jval] {
+        padding-top:3px;
+}
+.field-type-datetime
+, .field-type-text-with-summary
+, fieldset.form-wrapper {
+		clear: both !important;
+		float: none !important;
+		
+}
+#edit-profile-applicant-field-employment-collection-und-1-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-1-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-2-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-2-field-work-summary
+, #edit-profile-applicant-field-employment-collection-und-3-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-3-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-4-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-4-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-5-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-5-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-6-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-6-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-7-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-7-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-8-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-8-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-9-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-9-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-10-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-10-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-11-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-11-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-12-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-12-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-13-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-13-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-14-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-14-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-15-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-15-field-work-summary 
+, #edit-profile-applicant-field-employment-collection-und-16-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-16-field-work-summary
+, #edit-profile-applicant-field-employment-collection-und-17-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-17-field-work-summary  
+, #edit-profile-applicant-field-employment-collection-und-18-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-18-field-work-summary  
+, #edit-profile-applicant-field-employment-collection-und-19-field-work-duration 
+, #edit-profile-applicant-field-employment-collection-und-19-field-work-summary    
+, fieldset.form-wrapper{
+	width: 800px !important;
+}
+#edit-profile-applicant-field-employment-collection-und-0-field-industry
+,#edit-profile-applicant-field-employment-collection-und-1-field-industry
+,#edit-profile-applicant-field-employment-collection-und-2-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-3-field-industry
+,#edit-profile-applicant-field-employment-collection-und-4-field-industry
+,#edit-profile-applicant-field-employment-collection-und-5-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-6-field-industry
+,#edit-profile-applicant-field-employment-collection-und-7-field-industry
+,#edit-profile-applicant-field-employment-collection-und-8-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-9-field-industry  
+,#edit-profile-applicant-field-employment-collection-und-10-field-industry
+,#edit-profile-applicant-field-employment-collection-und-11-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-12-field-industry
+,#edit-profile-applicant-field-employment-collection-und-13-field-industry
+,#edit-profile-applicant-field-employment-collection-und-14-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-15-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-16-field-industry
+,#edit-profile-applicant-field-employment-collection-und-17-field-industry 
+,#edit-profile-applicant-field-employment-collection-und-18-field-industry    {
+		margin: 0 0 10px 274px;
+}
