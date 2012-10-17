@@ -310,9 +310,11 @@ function checkOuterForm(cur_step, id_of_stepwrap) {
 	// in Step 1
 	if (cur_step == 1) {	
 		stuff_error = [];
-		if (!$(location).attr('href').indexOf("user")) {
+		
+		if ($(location).attr('href').indexOf("user") < 0) {
 			if (!checkTxtBox($('#edit-name'),'username')){stuff_error.push(false);}
 			if (!checkTxtBox($('#edit-mail'),'email')){stuff_error.push(false);}
+			
 		}
 		if (!checkTxtBox($('#edit-profile-applicant-field-user-first-name-en-0-value'),'textbox')){stuff_error.push(false);}
 		if (!checkTxtBox($('#edit-profile-applicant-field-user-last-name-en-0-value'),'textbox')){stuff_error.push(false);}
@@ -350,8 +352,12 @@ function checkOuterForm(cur_step, id_of_stepwrap) {
 		if (!checkTxtBox($('#edit-profile-applicant-field-employment-collection-und-0-field-work-location-und'),'selectbox')){stuff_error.push(false);}
 		if (!checkTxtBox($('#edit-profile-applicant-field-employment-collection-und-0-field-work-summary-und-0-value'),'textbox')){stuff_error.push(false);}
 		if (stuff_error.length > 0) { resultStep = false; }	
-	} 	
-	target_top = $('#profile2_applicant_form_group_personal_info').offset().top;
+	} 
+	if ($(location).attr('href').indexOf("user") < 0) {
+		target_top = $('#edit-name').offset().top;		
+	} else {
+		target_top = $('#profile2_applicant_form_group_personal_info').offset().top;
+	}	
 	$('html, body').animate({scrollTop:target_top}, 500);
 	return resultStep;
 }

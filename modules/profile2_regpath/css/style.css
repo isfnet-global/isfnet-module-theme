@@ -372,8 +372,11 @@ textarea {
 		padding: 10px 0 0 0;		
 	}
 /* SCHOOL WRAPPER */
-	#field-education-school-values .form-wrapper
-	, #profile-applicant-field-education-user-add-more-wrapper .form-wrapper {
+	#field-education-school-values .form-wrapper {
+		width: 275px;
+		float: left;
+	} 
+	#profile-applicant-field-education-user-add-more-wrapper .form-wrapper {
 		width: 207px;
 		float: left;
 	}
@@ -479,7 +482,7 @@ textarea {
 
 /* Skills & Interests PAGE */
 	#edit-profile-applicant-field-other-skills .form-wrapper {
-		width: 300px;
+		width: 340px;
 		float: left;
 	}
 	#edit-profile-applicant-field-other-skills {

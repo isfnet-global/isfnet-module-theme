@@ -201,5 +201,4 @@ function isfnet_js_alter(&$javascript) {
   	 }
 }
 
-
 // END OF FILE
